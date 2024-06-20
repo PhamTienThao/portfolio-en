@@ -912,6 +912,11 @@
   margin: 0 -20px;
   padding: 0;
   font-size: 0;
+  display: flex;          /* Sử dụng Flexbox */
+  flex-wrap: wrap;       /* Cho phép các phần tử xuống dòng */
+  margin: 0 -10px;         /* Điều chỉnh margin cho phù hợp */
+  padding: 0;
+  list-style: none;
 }
 
 .info-list ul li {
@@ -922,6 +927,9 @@
   width: 50%;
   font-size: 14px;
   font-weight: 600;
+  width: 50%;            /* Chiều rộng mặc định cho màn hình lớn */
+  padding: 0 10px;        /* Điều chỉnh padding cho phù hợp */
+  margin-bottom: 10px;     /* Thêm margin-bottom cho khoảng cách */
 }
 
 .info-list ul li strong {
@@ -1010,6 +1018,13 @@
 
   .resume-item .name {
     margin-left: 0;
+  }
+  .info-list ul {
+    flex-direction: column; /* Sắp xếp các phần tử thành cột */
+  }
+
+  .info-list ul li {
+    width: 100%;            /* Chiều rộng 100% cho màn hình nhỏ */
   }
 }
 
@@ -2410,9 +2425,14 @@
 }
 
 .contact-form {
-  padding-right: 40px;
-  float: left;
-  width: 50%;
+    float: none;
+    width: 100%;
+    padding-bottom: 40px;
+}
+.contact-form .btn {
+  top: -10px;
+  display: block;
+  width: 100%;
 }
 
 .contact-form .group-val {
@@ -2441,13 +2461,15 @@
 .contact-info {
   padding: 30px;
   float: right;
-  width: 50%;
+  width: 100%;
   min-height: 482px;
   border: 1px solid #585d65;
   border-radius: 30px;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   -khtml-border-radius: 30px;
+  text-align: center;
+  
 }
 
 .contact-info .name {
@@ -2470,13 +2492,18 @@
 
 .contact-info .info-list ul li {
   position: relative;
-  white-space: nowrap;
   width: 100%;
+  word-break: break-word; /* Cho phép ngắt dòng trong email */
 }
 
 .contact-info .info-list ul li strong {
   margin-right: 8px;
   width: auto;
+}
+.contact-info .info-list ul li:last-child { /* Chỉ tác động đến li chứa email */
+  overflow: hidden;      /* Ẩn phần nội dung vượt quá giới hạn */
+  text-overflow: ellipsis; /* Thêm dấu ba chấm (...) cho phần bị ẩn */
+  white-space: nowrap;   /* Ngăn email xuống dòng */
 }
 
 .contact-info .author {
@@ -2499,7 +2526,6 @@
   }
 
   .contact-info {
-    margin-top: 40px;
     float: none;
     width: 100%;
   }
@@ -2927,3 +2953,7 @@ object {
   font-size: 0;
   line-height: 0;
 }
+
+
+
+

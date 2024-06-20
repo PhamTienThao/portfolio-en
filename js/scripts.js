@@ -459,42 +459,23 @@
 
 	});
 
-	/*
-		Validate Contact Form
-	*/
-	// $('#cform').validate({
-	// 	rules: {
-	// 		name: {
-	// 			required: true
-	// 		},
-	// 		message: {
-	// 			required: true
-	// 		},
-	// 		email: {
-	// 			required: true,
-	// 			email: true
-	// 		}
-	// 	},
-	// 	success: 'valid',
-	// 	submitHandler: function() {
-	// 		$.ajax({
-	// 			url: 'mailer/feedback.php',
-	// 			type: 'post',
-	// 			dataType: 'json',
-	// 			data: 'name='+ $("#cform").find('input[name="name"]').val() + '&email='+ $("#cform").find('input[name="email"]').val() + '&message=' + $("#cform").find('textarea[name="message"]').val(),
-	// 			beforeSend: function() {
-				
-	// 			},
-	// 			complete: function() {
-				
-	// 			},
-	// 			success: function(data) {
-	// 				$('#cform').fadeOut();
-	// 				$('.alert-success').delay(1000).fadeIn();
-	// 			}
-	// 		});
-	// 	}
-	// });
+	function truncateEmail() {
+		const emailElement = document.querySelector('.contact-info .info-list ul li:last-child');
+		const contactInfoElement = document.querySelector('.contact-info');
+	  
+		if (emailElement.offsetWidth > contactInfoElement.offsetWidth) {
+		  emailElement.classList.add('truncated');
+		} else {
+		  emailElement.classList.remove('truncated');
+		}
+	  }
+	  
+	  // Gọi hàm truncateEmail() sau khi DOM được load
+	  document.addEventListener('DOMContentLoaded', truncateEmail);
+	  
+	  // Gọi hàm truncateEmail() mỗi khi thay đổi kích thước cửa sổ
+	  window.addEventListener('resize', truncateEmail);
+	
 	
 	
 } )( jQuery );
