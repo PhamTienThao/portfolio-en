@@ -28,24 +28,6 @@
   <link rel="stylesheet" href="css/swiper.css" />
   <link rel="stylesheet" href="css/fontawesome.css" />
 
-  <!-- Theme Colors
-	<link rel="stylesheet" href="css/theme-colors/blue.css" />
-	<link rel="stylesheet" href="css/theme-colors/green.css" />
-	<link rel="stylesheet" href="css/theme-colors/orange.css" />
-	<link rel="stylesheet" href="css/theme-colors/brown.css" />
-	<link rel="stylesheet" href="css/theme-colors/purple.css" />
-	<link rel="stylesheet" href="css/theme-colors/red.css" />
-	<link rel="stylesheet" href="css/theme-colors/beige.css" />
-	<link rel="stylesheet" href="css/theme-colors/green_light.css" />
-	<link rel="stylesheet" href="css/theme-colors/yellow.css" />
-	<link rel="stylesheet" href="css/theme-colors/yellow_light.css" />
-	-->
-
-  <!--[if lt IE 9]>
-      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
   <link rel="shortcut icon" href="images/favicons/favicon.ico" />
 </head>
 
@@ -213,7 +195,7 @@
           <!-- info list -->
           <div class="info-list">
             <ul>
-              <li><strong>Age:</strong> 24</li>
+              <li><strong>Birthday:</strong> 15/05/2000</li>
               <li><strong>Residence:</strong> Viet Nam</li>
               <li><strong>Freelance:</strong> Available</li>
               <li><strong>Address:</strong> Thu Duc, HCMC</li>
@@ -319,7 +301,7 @@
               </div>
             </div>
             <!-- navigation -->
-            <div class="navs">
+            <div class="navs experience-navs">
               <span class="prev fas fa-chevron-left"></span>
               <span class="next fas fa-chevron-right"></span>
             </div>
@@ -418,11 +400,6 @@
                     craft polished video content with precision.
                   </p>
                 </div>
-                <div class="progress">
-                  <div class="percentage" style="width: 80%">
-                    <span class="percent">80%</span>
-                  </div>
-                </div>
               </li>
               <li>
                 <div class="name">Capcut PC</div>
@@ -431,11 +408,6 @@
                     Proficient in Capcut PC, applying Capcut PC's available
                     effects to increase the appeal of the video.
                   </p>
-                </div>
-                <div class="progress">
-                  <div class="percentage" style="width: 70%">
-                    <span class="percent">70%</span>
-                  </div>
                 </div>
               </li>
               <li>
@@ -446,11 +418,6 @@
                     tools to enhance visual elements within projects.
                   </p>
                 </div>
-                <div class="progress">
-                  <div class="percentage" style="width: 50%">
-                    <span class="percent">50%</span>
-                  </div>
-                </div>
               </li>
               <li>
                 <div class="name">After Effect</div>
@@ -460,11 +427,6 @@
                     level of 20%, incorporating simple animations and effects
                     into video projects.
                   </p>
-                </div>
-                <div class="progress">
-                  <div class="percentage" style="width: 20%">
-                    <span class="percent">20%</span>
-                  </div>
                 </div>
               </li>
             </ul>
@@ -1363,7 +1325,7 @@
 
           <!-- contact form -->
           <div class="contact-form">
-            <form action="https://api.web3forms.com/submit" method="POST">
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
               <input type="hidden" name="access_key" value="36144063-3dfc-4ed5-9b2c-3af00be705ed" />
               <div class="group-val">
                 <div class="label">Your Name <strong>*</strong></div>
@@ -1392,7 +1354,7 @@
             <div class="subname">Video Editor / Videographer</div>
             <div class="info-list">
               <ul>
-                <li><strong>Age:</strong> 24</li>
+                <li><strong>Birthday:</strong> 15/05/2000</li>
                 <li><strong>Residence:</strong> Viet Nam</li>
                 <li><strong>Freelance:</strong> Available</li>
                 <li><strong>Address:</strong> Thu Duc, HCMC</li>
@@ -1423,6 +1385,41 @@
   <script src="js/owl.carousel.js"></script>
   <script src="js/swiper.js"></script>
   <script src="js/scripts.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#contact-form").validate({
+        rules: {
+          name: {
+            required: true
+          },
+          email: {
+            required: true,
+            email: true
+          },
+          message: {
+            required: true
+          }
+        },
+        messages: {
+          name: {
+            required: "Please enter your name."
+          },
+          email: {
+            required: "Please enter your email.",
+            email: "Please enter a valid email address."
+          },
+          message: {
+            required: "Please enter message content."
+          }
+        },
+        submitHandler: function (form) {
+          // Gửi form nếu validation thành công
+          form.submit();
+        }
+      });
+    });
+  </script>
 
 
 </body>

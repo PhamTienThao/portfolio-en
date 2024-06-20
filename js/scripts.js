@@ -206,19 +206,23 @@
 	});
 	if($('.section').length && $('.top-menu li a').length) {
 		$(window).on('scroll', function(){
-			var scrollPos = $(window).scrollTop();
-			$('.top-menu ul li a').each(function () {
-				if($(this).attr('href').indexOf('#section-') == 0){
-					var currLink = $(this);
-					var refElement = $(currLink.attr("href"));
-					if(refElement.length){
-						if (refElement.offset().top <= scrollPos + 120) {
-							$('.top-menu ul li').removeClass("current-menu-item");
-							currLink.closest('li').addClass("current-menu-item");
-						}
-					}
+		  var scrollPos = $(window).scrollTop();
+		  var viewportBottom = scrollPos + $(window).height(); // Lấy vị trí bottom của viewport
+		  $('.top-menu ul li a').each(function () {
+			if($(this).attr('href').indexOf('#section-') == 0){
+			  var currLink = $(this);
+			  var refElement = $(currLink.attr("href"));
+			  if(refElement.length){
+				// Kiểm tra xem top của phần tử có nằm phía trên viewport
+				// và bottom của phần tử có nằm phía dưới viewport hay không
+				if (refElement.offset().top <= viewportBottom && 
+					refElement.offset().top + refElement.height() >= scrollPos) { 
+				  $('.top-menu ul li').removeClass("current-menu-item");
+				  currLink.closest('li').addClass("current-menu-item");
 				}
-			});
+			  }
+			}
+		  });
 		});
 	}
 
@@ -458,40 +462,39 @@
 	/*
 		Validate Contact Form
 	*/
-	$('#cform').validate({
-		rules: {
-			name: {
-				required: true
-			},
-			message: {
-				required: true
-			},
-			email: {
-				required: true,
-				email: true
-			}
-		},
-		success: 'valid',
-		submitHandler: function() {
-			$.ajax({
-				url: 'mailer/feedback.php',
-				type: 'post',
-				dataType: 'json',
-				data: 'name='+ $("#cform").find('input[name="name"]').val() + '&email='+ $("#cform").find('input[name="email"]').val() + '&message=' + $("#cform").find('textarea[name="message"]').val(),
-				beforeSend: function() {
+	// $('#cform').validate({
+	// 	rules: {
+	// 		name: {
+	// 			required: true
+	// 		},
+	// 		message: {
+	// 			required: true
+	// 		},
+	// 		email: {
+	// 			required: true,
+	// 			email: true
+	// 		}
+	// 	},
+	// 	success: 'valid',
+	// 	submitHandler: function() {
+	// 		$.ajax({
+	// 			url: 'mailer/feedback.php',
+	// 			type: 'post',
+	// 			dataType: 'json',
+	// 			data: 'name='+ $("#cform").find('input[name="name"]').val() + '&email='+ $("#cform").find('input[name="email"]').val() + '&message=' + $("#cform").find('textarea[name="message"]').val(),
+	// 			beforeSend: function() {
 				
-				},
-				complete: function() {
+	// 			},
+	// 			complete: function() {
 				
-				},
-				success: function(data) {
-					$('#cform').fadeOut();
-					$('.alert-success').delay(1000).fadeIn();
-				}
-			});
-		}
-	});
-	
+	// 			},
+	// 			success: function(data) {
+	// 				$('#cform').fadeOut();
+	// 				$('.alert-success').delay(1000).fadeIn();
+	// 			}
+	// 		});
+	// 	}
+	// });
 	
 	
 } )( jQuery );

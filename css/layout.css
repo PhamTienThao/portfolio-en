@@ -1013,6 +1013,20 @@
   }
 }
 
+/* Ẩn navigation khi màn hình lớn hơn 720px */
+@media (min-width: 721px) {
+  .experience-navs {
+    display: none;
+  }
+}
+
+/* Hiện navigation khi màn hình nhỏ hơn 720px */
+@media (max-width: 720px) {
+  .experience-navs {
+    display: block;
+  }
+}
+
 /* - Skills */
 .skills ul {
   margin: -40px -20px 0 -20px;

@@ -467,7 +467,7 @@ textarea {
 input:focus,
 textarea:focus,
 button:focus {
-  color: #747881;
+  color: #fff;
 }
 
 textarea {
@@ -513,22 +513,32 @@ input[type="radio"] {
 
 input:focus::-webkit-input-placeholder,
 textarea:focus::-webkit-input-placeholder {
-  color: #747881;
+  color: #7a7f88;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background: #7a7f88;
+    -webkit-text-fill-color: #fff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
 }
 
 input:focus:-moz-placeholder,
 textarea:focus:-moz-placeholder {
-  color: #747881;
+  color: #fff;
 }
 
 input:focus::-moz-placeholder,
 textarea:focus::-moz-placeholder {
-  color: #747881;
+  color: #fff;
 }
 
 input:focus:-ms-input-placeholder,
 textarea:focus:-ms-input-placeholder {
-  color: #747881;
+  color: #fff;
 }
 
 input.error,
