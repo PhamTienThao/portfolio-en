@@ -589,6 +589,9 @@
 .section .titles {
   position: relative;
   margin: 0 0 60px 0;
+  display: flex; /* Sử dụng Flexbox cho .titles */
+  flex-direction: column; /* Xếp "About Me" và "My Story" theo cột */
+  align-items: flex-start; /* Canh lề trái cho cả hai phần tử */
 }
 
 .section .titles .title {
@@ -685,6 +688,9 @@
     padding-right: 30px;
     text-align: center;
   }
+
+
+
 
   .section .titles {
     margin-bottom: 50px;
@@ -908,13 +914,10 @@
 }
 
 .info-list ul {
-  list-style: none;
-  margin: 0 -20px;
-  padding: 0;
-  font-size: 0;
   display: flex;          /* Sử dụng Flexbox */
   flex-wrap: wrap;       /* Cho phép các phần tử xuống dòng */
-  margin: 0 -10px;         /* Điều chỉnh margin cho phù hợp */
+  justify-content: space-between; /* Phân bố đều khoảng cách giữa các phần tử */
+  margin: 0;          /* Loại bỏ margin mặc định của ul */
   padding: 0;
   list-style: none;
 }
@@ -929,6 +932,7 @@
   font-weight: 600;
   width: 50%;            /* Chiều rộng mặc định cho màn hình lớn */
   padding: 0 10px;        /* Điều chỉnh padding cho phù hợp */
+  flex-basis: 48%;      /* Sử dụng flex-basis để kiểm soát chiều rộng của li */
   margin-bottom: 10px;     /* Thêm margin-bottom cho khoảng cách */
 }
 
@@ -942,8 +946,12 @@
 }
 
 @media (max-width: 720px) {
+  .info-list ul {
+    flex-direction: column; /* Sắp xếp các phần tử thành cột */
+  }
   .info-list ul li {
     width: 100%;
+    flex-basis: auto;
   }
 
   .info-list ul li strong {

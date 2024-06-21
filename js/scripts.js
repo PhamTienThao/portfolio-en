@@ -475,7 +475,51 @@
 	  
 	  // Gọi hàm truncateEmail() mỗi khi thay đổi kích thước cửa sổ
 	  window.addEventListener('resize', truncateEmail);
-	
+
+	  document.addEventListener('DOMContentLoaded', function() {
+		// --- Chức năng cuộn mượt mà cho button Contact ---
+	  
+		// Lấy button Contact bằng id
+		const contactButton = document.getElementById('contact-button');
+	  
+		// Thêm event listener cho button Contact
+		if (contactButton) { // Kiểm tra xem button Contact có tồn tại hay không
+		  contactButton.addEventListener('click', function(event) {
+			event.preventDefault(); // Ngăn chặn hành vi mặc định của trình duyệt
+	  
+			// Lấy phần tử section-contacts bằng id
+			const contactSection = document.getElementById('section-contacts');
+	  
+			// Tính toán offset dựa trên chiều cao của header
+			const headerHeight = document.querySelector('.header').offsetHeight;
+			const offset = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+	  
+			// Cuộn mượt mà đến section-contacts với offset
+			window.scrollTo({
+			  top: offset,
+			  behavior: 'smooth'
+			});
+		  });
+		}
+	  
+		// --- Chức năng cuộn mượt mà cho logo ---
+	  
+		// Lấy logo bằng id
+		const logoLink = document.getElementById('logo-link');
+	  
+		// Thêm event listener cho logo
+		if (logoLink) { // Kiểm tra xem logo có tồn tại hay không
+		  logoLink.addEventListener('click', function(event) {
+			event.preventDefault(); // Ngăn chặn hành vi mặc định của trình duyệt
+	  
+			// Cuộn mượt mà lên đầu trang
+			window.scrollTo({
+			  top: 0, // Cuộn đến vị trí top: 0
+			  behavior: 'smooth'
+			});
+		  });
+		}
+	  });
 	
 	
 } )( jQuery );
